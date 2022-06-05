@@ -2,19 +2,34 @@ import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components';
 
+const BodyDiv = styled.div`
+  width: 95%;
+  margin: 0 0 0 5%;
+`;
+
 const Chat = styled.div`
   color: #fff;
   display: flex;
   flex-wrap: wrap;
-  margin: 30px 2vw;
-  width: 93vw;
+  margin: 30px auto;
+  width: 100%;
 `;
 
 const MapDiv = styled.div`
-  background-color: #000;
+  background-color: #666;
   color: #fff;
   margin: 30px 2vw;
-  width: 25vw;
+  padding: 10px;
+  width: 27%;
+  border: 3px solid #bbb;
+`;
+
+const FormDiv = styled.form`
+  width: 98%;
+  margin: 20px 0 0 2%;
+    button{
+      border: 2px #ccc solid;
+    }
 `;
 
 export default function article() {
@@ -28,20 +43,25 @@ export default function article() {
     message: string;
   }
 
+  type FormInput = {
+    name : string
+    message : string
+  }
+
   interface IPostResponse {
     name : string
     message : string
   }
 
   const [articles,setArticles] = useState([]);
-  const [name,setName] = useState('');
-  const [message,setMessage] = useState('');
+  const [name,setName] = useState<string>('');
+  const [message,setMessage] = useState<string>('');
 
-  const handleChangeName = (e: any) => {
+  const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   }
 
-  const handleChangeMessage = (e: any) => {
+  const handleChangeMessage = (e: React.ChangeEvent<HTMLInputElement>) => {
     setMessage(e.target.value);
   }
 
@@ -73,23 +93,25 @@ export default function article() {
 
   return (
     <div>
-      <div>
-        <input value={name} onChange={handleChangeName} />
-        <input value={message} onChange={handleChangeMessage} />
-        <button onClick={createNewButton}>作成</button>
-      </div>
-      <Chat>
-        {
-          articles.map((article: Data) => {
-            return(
-              <MapDiv key={article.id}>
-                <div>{article.name}</div>
-                <div>{article.message}</div>
-              </MapDiv>
-            )
-          })
-        }
-      </Chat>
+      <BodyDiv>
+        <FormDiv onClick={createNewButton}>
+          <input value={name} onChange={handleChangeName} placeholder='name' />
+          <input value={message} onChange={handleChangeMessage} placeholder='message' />
+          <button>作成</button>
+        </FormDiv>
+        <Chat>
+          {
+            articles.map((article: Data) => {
+              return(
+                <MapDiv key={article.id}>
+                  <div>{article.name}</div>
+                  <div>{article.message}</div>
+                </MapDiv>
+              )
+            })
+          }
+        </Chat>
+      </BodyDiv>
     </div>
   )
 }

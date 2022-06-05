@@ -4,6 +4,7 @@ import Home from '../Home/Home';
 import Article from '../Article/Article';
 import styled from 'styled-components';
 import HLink from './HLink';
+import Stock from '../Stock/stock';
 
 const headerHeight = '3rem';
 
@@ -22,9 +23,11 @@ const Hbody = styled.div`
 `;
 
 const HElement = styled.div`
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 7%;
+    height: 2000px;
+    width: 93%;
 `;
 
 export default function Header() {
@@ -38,6 +41,7 @@ export default function Header() {
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/article' element={<Article />} />
+                    <Route path='stock' element={<Stock />} />
                 </Routes>
             </HElement>
         </BrowserRouter>

@@ -22,6 +22,7 @@ export default function HLink() {
         <HeaderNav>
             <div><Link to='/' style={HLinkCss} >Home</Link></div>
             <div><Link to='/article' style={HLinkCss} >Article</Link></div>
+            <div><Link to='/stock' style={HLinkCss} >Stock</Link></div>
         </HeaderNav>
     </div>
   )
