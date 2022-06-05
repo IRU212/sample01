@@ -3243,22 +3243,61 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function article() {
-  var apiURL = 'api/article';
+  var apiGetURL = 'api/article';
+  var apiPostURL = 'api/article/create';
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       articles = _useState2[0],
       setArticles = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      name = _useState4[0],
+      setName = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+      _useState6 = _slicedToArray(_useState5, 2),
+      message = _useState6[0],
+      setMessage = _useState6[1];
+
+  var handleChangeName = function handleChangeName(e) {
+    setName(e.target.value);
+  };
+
+  var handleChangeMessage = function handleChangeMessage(e) {
+    setMessage(e.target.value);
+  };
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    axios__WEBPACK_IMPORTED_MODULE_0___default().get(apiURL).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get(apiGetURL).then(function (response) {
       setArticles(response.data);
       console.log(response);
     })["catch"](function (e) {
       console.log(e);
     });
   }, []);
-  return react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, articles.map(function (article) {
+
+  var createNewButton = function createNewButton() {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post(apiPostURL, {
+      name: name,
+      message: message
+    }).then(function (response) {
+      console.log(response);
+    })["catch"](function (e) {
+      console.log(e);
+    });
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
+    value: name,
+    onChange: handleChangeName
+  }), react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
+    value: message,
+    onChange: handleChangeMessage
+  }), react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
+    onClick: createNewButton
+  }, "\u4F5C\u6210")), react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, articles.map(function (article) {
     return react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
       key: article.id
     }, article.name, article.message);

@@ -12,4 +12,13 @@ class ArticleController extends Controller
         $article = Article::all();
         return response()->json($article,200);
     }
+
+    public function create(Request $request)
+    {
+        $article = new Article();
+        $article->name = $request->name;
+        $article->message = $request->message;
+        $article->save();
+        // return response()->json($article,200);
+    }
 }
