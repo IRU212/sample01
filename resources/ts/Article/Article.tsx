@@ -1,5 +1,21 @@
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react'
+import styled from 'styled-components';
+
+const Chat = styled.div`
+  color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px 2vw;
+  width: 93vw;
+`;
+
+const MapDiv = styled.div`
+  background-color: #000;
+  color: #fff;
+  margin: 30px 2vw;
+  width: 25vw;
+`;
 
 export default function article() {
 
@@ -62,18 +78,18 @@ export default function article() {
         <input value={message} onChange={handleChangeMessage} />
         <button onClick={createNewButton}>作成</button>
       </div>
-      <div>
+      <Chat>
         {
           articles.map((article: Data) => {
             return(
-              <div key={article.id}>
-                {article.name}
-                {article.message}
-              </div>
+              <MapDiv key={article.id}>
+                <div>{article.name}</div>
+                <div>{article.message}</div>
+              </MapDiv>
             )
           })
         }
-      </div>
+      </Chat>
     </div>
   )
 }

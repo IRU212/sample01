@@ -14,7 +14,6 @@ const App: React.FC = () => {
         <div>
             <Body>
                 <Header />
-                <p>こんにちは</p>
             </Body>
         </div>
     )

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const HeaderNav = styled.div`
     width: 100%;
-    margin: 0px;
+    margin: 0;
     padding: 0px;
 `;
 
@@ -20,8 +20,8 @@ export default function HLink() {
   return (
     <div>
         <HeaderNav>
-            <Link to='/' style={HLinkCss} >Home</Link>
-            <Link to='/article' style={HLinkCss} >Article</Link>
+            <div><Link to='/' style={HLinkCss} >Home</Link></div>
+            <div><Link to='/article' style={HLinkCss} >Article</Link></div>
         </HeaderNav>
     </div>
   )

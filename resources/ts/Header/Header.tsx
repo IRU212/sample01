@@ -8,12 +8,23 @@ import HLink from './HLink';
 const headerHeight = '3rem';
 
 const Hbody = styled.div`
-    width: 100%;
-    margin: 0px;
+    width: 7%;
+    margin: 0;
     padding: 0px;
-    height: ${headerHeight};
-    line-height: ${headerHeight};
-    border-bottom: 1px #999 solid;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    text-align: center;
+    border-right: 1.5px #ccc solid;
+    line-height: 8vh;
+    padding-top: 4vh;
+`;
+
+const HElement = styled.div`
+    position: fixed;
+    top: 0;
+    left: 7%;
 `;
 
 export default function Header() {
@@ -23,12 +34,12 @@ export default function Header() {
             <Hbody>
                 <HLink />
             </Hbody>
-            <div>
+            <HElement>
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/article' element={<Article />} />
                 </Routes>
-            </div>
+            </HElement>
         </BrowserRouter>
     </div>
   )

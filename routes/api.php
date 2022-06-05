@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/article',[ArticleController::class,'index']);
 Route::post('/article/create',[ArticleController::class,'create']);
+Route::post('/article/delete',[ArticleController::class,'delete']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

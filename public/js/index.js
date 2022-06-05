@@ -3228,6 +3228,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+var _templateObject, _templateObject2;
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -3240,8 +3243,13 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
+
+
+var Chat = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n  color: #fff;\n  display: flex;\n  flex-wrap: wrap;\n  margin: 30px 2vw;\n  width: 93vw;\n"])));
+var MapDiv = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n  background-color: #000;\n  color: #fff;\n  margin: 30px 2vw;\n  width: 25vw;\n"])));
 function article() {
   var apiGetURL = 'api/article';
   var apiPostURL = 'api/article/create';
@@ -3297,10 +3305,10 @@ function article() {
     onChange: handleChangeMessage
   }), react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
     onClick: createNewButton
-  }, "\u4F5C\u6210")), react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, articles.map(function (article) {
-    return react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", {
+  }, "\u4F5C\u6210")), react__WEBPACK_IMPORTED_MODULE_1__.createElement(Chat, null, articles.map(function (article) {
+    return react__WEBPACK_IMPORTED_MODULE_1__.createElement(MapDiv, {
       key: article.id
-    }, article.name, article.message);
+    }, react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, article.name), react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, article.message));
   })));
 }
 
@@ -3327,7 +3335,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-var HeaderNav = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    width: 100%;\n    margin: 0px;\n    padding: 0px;\n"])));
+var HeaderNav = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    width: 100%;\n    margin: 0;\n    padding: 0px;\n"])));
 var HLinkCss = {
   color: '#000',
   fontSize: '1rem',
@@ -3335,13 +3343,13 @@ var HLinkCss = {
   marginLeft: '5%'
 };
 function HLink() {
-  return react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement(HeaderNav, null, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+  return react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement(HeaderNav, null, react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     to: '/',
     style: HLinkCss
-  }, "Home"), react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
+  }, "Home")), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     to: '/article',
     style: HLinkCss
-  }, "Article")));
+  }, "Article"))));
 }
 
 /***/ }),
@@ -3364,7 +3372,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Article_Article__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Article/Article */ "./resources/ts/Article/Article.tsx");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _HLink__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./HLink */ "./resources/ts/Header/HLink.tsx");
-var _templateObject;
+var _templateObject, _templateObject2;
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -3375,9 +3383,10 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 var headerHeight = '3rem';
-var Hbody = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    width: 100%;\n    margin: 0px;\n    padding: 0px;\n    height: ", ";\n    line-height: ", ";\n    border-bottom: 1px #999 solid;\n"])), headerHeight, headerHeight);
+var Hbody = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    width: 7%;\n    margin: 0;\n    padding: 0px;\n    position: fixed;\n    top: 0;\n    left: 0;\n    height: 100vh;\n    text-align: center;\n    border-right: 1.5px #ccc solid;\n    line-height: 8vh;\n    padding-top: 4vh;\n"])));
+var HElement = styled_components__WEBPACK_IMPORTED_MODULE_4__["default"].div(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["\n    position: fixed;\n    top: 0;\n    left: 7%;\n"])));
 function Header() {
-  return react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.BrowserRouter, null, react__WEBPACK_IMPORTED_MODULE_0__.createElement(Hbody, null, react__WEBPACK_IMPORTED_MODULE_0__.createElement(_HLink__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Routes, null, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+  return react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.BrowserRouter, null, react__WEBPACK_IMPORTED_MODULE_0__.createElement(Hbody, null, react__WEBPACK_IMPORTED_MODULE_0__.createElement(_HLink__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0__.createElement(HElement, null, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Routes, null, react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
     path: '/',
     element: react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Home_Home__WEBPACK_IMPORTED_MODULE_1__["default"], null)
   }), react__WEBPACK_IMPORTED_MODULE_0__.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
@@ -3430,7 +3439,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 var Body = styled_components__WEBPACK_IMPORTED_MODULE_3__["default"].div(_templateObject || (_templateObject = _taggedTemplateLiteral(["\n    width: 100%;\n    margin: 0px;\n    padding: 0px;\n"])));
 
 var App = function App() {
-  return react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement(Body, null, react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Header_Header__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "\u3053\u3093\u306B\u3061\u306F")));
+  return react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0__.createElement(Body, null, react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Header_Header__WEBPACK_IMPORTED_MODULE_2__["default"], null)));
 };
 
 if (document.getElementById('app')) {

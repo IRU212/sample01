@@ -19,6 +19,14 @@ class ArticleController extends Controller
         $article->name = $request->name;
         $article->message = $request->message;
         $article->save();
-        // return response()->json($article,200);
+        return response()->json($article,200);
+    }
+
+    public function delete(Request $request)
+    {
+        $article = Article::find($request->id);
+        $article->delete();
+        $article = Article::all();
+        return response()->json($article,200);
     }
 }
