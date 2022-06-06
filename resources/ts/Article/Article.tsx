@@ -1,5 +1,7 @@
 import axios, { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
 
 const BodyDiv = styled.div`
@@ -91,6 +93,20 @@ export default function article() {
     });
   }
 
+  const deleteUser = (id : number) => {
+    axios
+      .delete(`/api/article/delete/${id}`)
+      .then(function (response) {
+        // handle success
+        console.log(response);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
+  }
+
+
   return (
     <div>
       <BodyDiv>
@@ -106,6 +122,10 @@ export default function article() {
                 <MapDiv key={article.id}>
                   <div>{article.name}</div>
                   <div>{article.message}</div>
+                  <div>
+                    {/* <Link to={'/api/article/delete/' + article.id}><button >削除</button></Link> */}
+                    <button onClick={() => deleteUser(article.id)} >削除</button>
+                  </div>
                 </MapDiv>
               )
             })

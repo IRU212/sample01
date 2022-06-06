@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\StockController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/article',[ArticleController::class,'index']);
 Route::post('/article/create',[ArticleController::class,'create']);
-Route::post('/article/delete',[ArticleController::class,'delete']);
+Route::delete('/article/delete/{id}',[ArticleController::class,'delete']);
+Route::get('/stock',[StockController::class,'index']);
+Route::post('/stock/create',[StockController::class,'create']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

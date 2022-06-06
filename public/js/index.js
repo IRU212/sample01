@@ -3299,6 +3299,16 @@ function article() {
     });
   };
 
+  var deleteUser = function deleteUser(id) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default()["delete"]("/api/article/delete/".concat(id)).then(function (response) {
+      // handle success
+      console.log(response);
+    })["catch"](function (error) {
+      // handle error
+      console.log(error);
+    });
+  };
+
   return react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1__.createElement(BodyDiv, null, react__WEBPACK_IMPORTED_MODULE_1__.createElement(FormDiv, {
     onClick: createNewButton
   }, react__WEBPACK_IMPORTED_MODULE_1__.createElement("input", {
@@ -3312,7 +3322,11 @@ function article() {
   }), react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", null, "\u4F5C\u6210")), react__WEBPACK_IMPORTED_MODULE_1__.createElement(Chat, null, articles.map(function (article) {
     return react__WEBPACK_IMPORTED_MODULE_1__.createElement(MapDiv, {
       key: article.id
-    }, react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, article.name), react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, article.message));
+    }, react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, article.name), react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, article.message), react__WEBPACK_IMPORTED_MODULE_1__.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_1__.createElement("button", {
+      onClick: function onClick() {
+        return deleteUser(article.id);
+      }
+    }, "\u524A\u9664")));
   }))));
 }
 
