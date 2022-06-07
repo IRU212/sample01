@@ -18,59 +18,12 @@ const Graph1 = styled.div`
 
 export default function Graph() {
     
-    const URL : string = "http://api.marketstack.com/v1/eod";
-    const ACCESS_KEY : string = "c86e9f2e8c8cfbb7acd5189866562fab" ;
-
-    const [stockData,setStockData] = useState({});
-    const [stockPrice, setStockPrice] = useState({});
-    const d = new Date();
-
-    const data = {
-        labels: [d.getMonth()+'月',d.getMonth()+1+'月',d.getMonth()+2+'月',d.getMonth()+3+'月',d.getMonth()+4+'月',d.getMonth()+5+'月',],
-        datasets:[
-            {
-            borderColor: 'rgba(35,200,153,1)'
-            data: [100,120,50,110,60,88],
-            lineTension: 0,
-        }
-      ]
-    }
-
-    const graphoptions = {
-        legend : {
-            display : false
-        },
-        scales : {
-            xAxes : [{
-                display : false
-            }],
-            yAxes : [{
-                display : false
-            }],
-        },
-    }
-
-    useEffect(() => {
-        const getStockData = (symbol : any) => {
-            axios
-            .get(`${URL}/${symbol}?access_key=${ACCESS_KEY}`)
-            .then((res : AxiosResponse<any,any>)=>{
-                console.log(res.data);
-                setStockData(res.data);
-            })
-            .catch((e: AxiosError<{ error: string }>) => {
-                console.log(e.message);
-            });
-        }
-        getStockData('TSLA');
-    },[])
-    
   return (
     <div>
         <ABody>
             <Graph1>
                 株価チャート表示
-                <Line data={data} options={graphoptions} />
+                {/* <Line data={data} options={graphoptions} /> */}
             </Graph1>
         </ABody>
     </div>

@@ -22,6 +22,11 @@ class ArticleController extends Controller
         return response()->json($article,200);
     }
 
+    public function updated(Request $request,$id)
+    {
+        //
+    }
+
     public function delete($id)
     {
         Article::where('id',$id)->delete();

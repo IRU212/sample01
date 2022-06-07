@@ -1,8 +1,33 @@
 import axios, { AxiosError } from 'axios';
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom';
-import { Route, Routes } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useModal } from 'react-hooks-use-modal'
 import styled from 'styled-components';
+
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import ModalBody from '../Modal/ModalBody';
+
+const TrashIcon = {
+  backgroundColor: '#666',
+}
+
+const DivFlex = styled.div`
+  display: flex;
+`;
+
+const MainDiv = styled.div`
+  font-size: 2rem;
+  margin: 3rem auto;
+  padding: 0;
+  width: 10%;
+  letter-spacing: 6px;
+  font-family: Meiryo;
+`;
+
+const modalStyle = {
+  backgroundColor: '#fff',
+  padding: '60px 100px',
+  borderRadius: '10px',
+}
 
 const BodyDiv = styled.div`
   width: 95%;
@@ -43,11 +68,6 @@ export default function article() {
     id: number;
     name: string;
     message: string;
-  }
-
-  type FormInput = {
-    name : string
-    message : string
   }
 
   interface IPostResponse {
@@ -97,23 +117,27 @@ export default function article() {
     axios
       .delete(`/api/article/delete/${id}`)
       .then(function (response) {
-        // handle success
         console.log(response);
       })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      });
+      .catch((e: AxiosError<{ error: string }>) => {
+        console.log(e);
+    });
   }
-
 
   return (
     <div>
+      <MainDiv>
+        TODO
+      </MainDiv>
+      <div>
+        <ModalBody />
+      </div>
       <BodyDiv>
         <FormDiv onClick={createNewButton}>
           <input value={name} onChange={handleChangeName} placeholder='name' />
           <input value={message} onChange={handleChangeMessage} placeholder='message' />
           <button>作成</button>
+          <div id='overlay'></div>
         </FormDiv>
         <Chat>
           {
@@ -121,11 +145,10 @@ export default function article() {
               return(
                 <MapDiv key={article.id}>
                   <div>{article.name}</div>
-                  <div>{article.message}</div>
-                  <div>
-                    {/* <Link to={'/api/article/delete/' + article.id}><button >削除</button></Link> */}
-                    <button onClick={() => deleteUser(article.id)} >削除</button>
-                  </div>
+                  <DivFlex>
+                    <div>{article.message}</div>
+                    <div><DeleteForeverIcon onClick={() => deleteUser(article.id)} style={TrashIcon}  /></div>
+                  </DivFlex>
                 </MapDiv>
               )
             })
