@@ -1,5 +1,17 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
+import TodoPost from '../Post/TodoPost';
+
+import AddBoxIcon from '@mui/icons-material/AddBox';
+
+const Plus = {
+  fontSize: '4rem',
+  height: '4rem',
+  position: 'fixed',
+  bottom: '1.5rem',
+  right: '1.5rem',
+  cursor: 'pointer'
+}
 
 const Overlay = styled.div`
   /*　画面全体を覆う設定　*/
@@ -28,7 +40,7 @@ function Modal({show, setShow}) {
     return (
       <Overlay>
         <Content>
-          <p>これがモーダルウィンドウです。</p>
+          <TodoPost />
           <button onClick={() => setShow(false)}>Close</button>
         </Content>
       </Overlay>
@@ -48,7 +60,7 @@ function ModalBody() {
 
     return (
       <div>
-        <button onClick={openModal}>Click</button>
+        <AddBoxIcon onClick={openModal} style={Plus} />
         <Modal show={show} setShow={setShow} />
       </div>
   )
